@@ -1,0 +1,1178 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+# In[1]:
+
+
+import os
+
+
+# In[2]:
+
+
+os.getcwd()
+
+
+# In[3]:
+
+
+os.chdir("/Users/mohammadawais/Desktop")
+
+
+# In[4]:
+
+
+import numpy as np
+import pandas as pd
+
+
+# In[5]:
+
+
+x=pd.read_csv("/Users/mohammadawais/Desktop/Data.csv")
+
+
+# In[6]:
+
+
+x.head()
+
+
+# In[ ]:
+
+
+
+
+
+# In[7]:
+
+
+x
+
+
+# # Analysis of Xbox Products in column Platform
+
+# In[8]:
+
+
+y=x['platform']
+
+
+# In[9]:
+
+
+y
+
+
+# In[10]:
+
+
+y.count
+
+
+# In[11]:
+
+
+x.describe()
+
+
+# In[12]:
+
+
+x.median()
+
+
+# In[13]:
+
+
+Xbox_one_filter = (x['score']>7) & (x['platform']== 'Xbox One')
+
+
+# In[14]:
+
+
+filter_Xbox_One=x[Xbox_one_filter]
+
+
+# In[15]:
+
+
+filter_Xbox_One
+
+
+# In[16]:
+
+
+y=filter_Xbox_One['score']
+
+
+# In[17]:
+
+
+y
+
+
+# In[18]:
+
+
+a=y.mean()
+
+
+# In[19]:
+
+
+a
+
+
+# In[20]:
+
+
+x.head()
+
+
+# In[21]:
+
+
+grouping_platform=x.groupby('platform')
+store=grouping_platform.groups
+
+
+# In[22]:
+
+
+store
+
+
+# # xbox one, xbox 360,xbox
+
+# In[23]:
+
+
+xbox_360_filter= (x['score']>7) & (x['platform']== 'Xbox 360')
+
+
+# In[24]:
+
+
+filter_xbox_360=x[xbox_360_filter]
+
+
+# In[25]:
+
+
+filter_xbox_360
+
+
+# In[26]:
+
+
+z=filter_xbox_360['score']
+
+
+# In[27]:
+
+
+z
+
+
+# In[28]:
+
+
+b=z.mean()
+
+
+# In[29]:
+
+
+b
+
+
+# In[30]:
+
+
+xbox_filter= (x['score']>7) & (x['platform']== 'Xbox')
+
+
+# In[31]:
+
+
+filter_xbox=x[xbox_filter]
+
+
+# In[32]:
+
+
+filter_xbox
+
+
+# In[33]:
+
+
+w=filter_xbox['score']
+
+
+# In[34]:
+
+
+w
+
+
+# In[35]:
+
+
+c=w.mean()
+
+
+# In[36]:
+
+
+c
+
+
+# In[37]:
+
+
+import matplotlib.pyplot as plt
+import matplotlib.style as sty
+
+
+# In[38]:
+
+
+# Q:1: Amswer
+plt.plot([a,b,c]) # [x-axis],[y-axis]
+plt.title('Platform Mean')
+plt.xlabel('x-axis')
+plt.ylabel('y-axis')
+print(plt.show())
+
+
+# In[39]:
+
+
+value=[a,b,c]
+activities = ['xbox one', 'xbox 360','xbox']
+colors = ['r', 'g','c']
+plt.pie(value, labels=activities, colors=colors, startangle=90, autopct='%.1f%%')
+print(plt.show)
+
+
+# In[40]:
+
+
+import matplotlib.pyplot as plt; plt.rcdefaults()
+import numpy as np
+import matplotlib.pyplot as plt
+
+objects = ('Xbox One', 'Xbox 360', 'Xbox')
+y_pos = np.arange(len(objects))
+performance = [a,b,c]
+
+plt.bar(y_pos, performance, align='center', alpha=0.5)
+plt.xticks(y_pos, objects)
+plt.ylabel('Average Score')
+plt.title('Xbox Bar Graph')
+
+plt.show()
+
+
+
+# # Kernel re-start from here
+
+# # Analysis of Playstation products on column Platform
+
+# In[41]:
+
+
+import os
+
+
+# In[42]:
+
+
+os.getcwd()
+
+
+# In[43]:
+
+
+import pandas as pd
+import numpy as np
+import seaborn as sns
+
+
+# In[44]:
+
+
+import matplotlib.pyplot as plt
+
+
+# In[45]:
+
+
+import matplotlib.style as sty
+
+
+# In[46]:
+
+
+x=pd.read_csv('/Users/mohammadawais/Desktop/Data.csv')
+
+
+# In[47]:
+
+
+x.head()
+
+
+# In[48]:
+
+
+playstation_=(x['score']>7) &(x['platform']=='PlayStation')
+
+
+# In[49]:
+
+
+playstation_filter=x[playstation_]
+
+
+# In[50]:
+
+
+playstation_filter
+
+
+# In[51]:
+
+
+y=playstation_filter['score']
+
+
+# In[52]:
+
+
+y
+
+
+# In[53]:
+
+
+a=y.mean()
+
+
+# In[54]:
+
+
+a
+
+
+# In[55]:
+
+
+playstation_2=(x['score']>7)&(x['platform']=='PlayStation 2')
+
+
+# In[56]:
+
+
+playstation_2_filter=x[playstation_2]
+
+
+# In[57]:
+
+
+p=playstation_2_filter['score']
+
+
+# In[58]:
+
+
+p
+
+
+# In[59]:
+
+
+b=p.mean()
+
+
+# In[60]:
+
+
+b
+
+
+# In[61]:
+
+
+playstation_3=(x['score']>7)&(x['platform']=='PlayStation 3')
+
+
+# In[62]:
+
+
+playstation_3_filter=x[playstation_3]
+
+
+# In[63]:
+
+
+q=playstation_3_filter['score']
+
+
+# In[64]:
+
+
+q
+
+
+# In[65]:
+
+
+c=q.mean()
+
+
+# In[66]:
+
+
+c
+
+
+# In[67]:
+
+
+playstation_4=(x['score']>7) & (x['platform']=='PlayStation 4')
+playstation_4_filter=x[playstation_4]
+
+
+# In[68]:
+
+
+r=playstation_4_filter['score']
+
+
+# In[69]:
+
+
+r
+
+
+# In[70]:
+
+
+d=r.mean()
+
+
+# In[71]:
+
+
+d
+
+
+# In[72]:
+
+
+playstation_portable=(x['score']>7)&(x['platform']=='PlayStation Portable')
+
+
+# In[73]:
+
+
+portable_filter=x[playstation_portable]
+
+
+# In[74]:
+
+
+s=portable_filter['score']
+
+
+# In[75]:
+
+
+s
+
+
+# In[76]:
+
+
+e=s.mean()
+
+
+# In[77]:
+
+
+e
+
+
+# In[78]:
+
+
+playstation_vita=(x['score']>7)&(x['platform']=='PlayStation Vita')
+
+
+# In[79]:
+
+
+playstation_vita_filter=x[playstation_vita]
+t=playstation_vita_filter['score']
+
+
+# In[80]:
+
+
+t
+
+
+# In[81]:
+
+
+f=t.mean()
+
+
+# In[82]:
+
+
+f
+
+
+# In[83]:
+
+
+# Q:2: Answer
+plt.plot([a,b,c,d,e,f]) # [x-axis],[y-axis]
+plt.title('Platform PlayStation Average')
+plt.xlabel('x-axis')
+plt.ylabel('y-axis')
+print(plt.show())
+
+
+# In[84]:
+
+
+value=[a,b,c,d,e,f]
+activities = ['PlayStation', 'PlayStation 2','PlayStation 3','PlayStation 4','PlayStation Portable','PlayStation Vita']
+colors = ['r','g','c','r','w','m']
+plt.pie(value, labels=activities, colors=colors, startangle=90, autopct='%.1f%%')
+print(plt.show)
+
+
+# In[85]:
+
+
+import matplotlib.pyplot as plt; plt.rcdefaults()
+import numpy as np
+import matplotlib.pyplot as plt
+
+objects = ('PlayStation', 'PlayStation 2', 'PlayStation 3','PlayStation 4','PlayStation Portable','PlayStation Vita')
+y_pos = np.arange(len(objects))
+performance = [a,b,c,d,e,f]
+
+plt.bar(y_pos, performance, align='center', alpha=0.5)
+plt.xticks(y_pos, objects)
+plt.ylabel('Average Score')
+plt.title('PlayStation Bar Graph')
+
+plt.show()
+
+
+
+# # Analysis of Nintendo products on column Platform
+
+# In[86]:
+
+
+new_=(x['score']>7)&(x['platform']=='New Nintendo 3DS')
+
+
+# In[87]:
+
+
+new_filter=x[new_]
+new_filter
+
+
+# In[88]:
+
+
+score=new_filter['score']
+
+
+# In[89]:
+
+
+score
+
+
+# In[90]:
+
+
+a1=score.mean()
+
+
+# # 
+
+# In[91]:
+
+
+a1
+
+
+# In[92]:
+
+
+new_64=(x['score']>7)&(x['platform']=='Nintendo 64')
+
+
+# In[93]:
+
+
+new_64_filter=x[new_64]
+new_64_filter
+
+
+# In[94]:
+
+
+score_64=new_64_filter['score']
+
+
+# In[95]:
+
+
+score_64
+
+
+# In[96]:
+
+
+b1=score_64.mean()
+
+
+# In[97]:
+
+
+b1
+
+
+# In[98]:
+
+
+new_dd=(x['score']>7)&(x['platform']=='Nintendo 64DD')
+
+
+# In[99]:
+
+
+new_dd_filter=x[new_dd]
+
+
+# In[100]:
+
+
+new_dd_filter
+
+
+# In[101]:
+
+
+score_dd=new_dd_filter['score']
+
+
+# In[102]:
+
+
+score_dd
+
+
+# In[103]:
+
+
+c1=score_dd.mean()
+
+
+# In[104]:
+
+
+c1
+
+
+# In[105]:
+
+
+new_ds=(x['score']>7)&(x['platform']=='Nintendo DS')
+
+
+# In[106]:
+
+
+new_ds_filter=x[new_ds]
+
+
+# In[107]:
+
+
+new_ds_filter
+
+
+# In[108]:
+
+
+score_ds=new_ds_filter['score']
+
+
+# In[109]:
+
+
+score_ds
+
+
+# In[110]:
+
+
+d1=score_ds.mean()
+
+
+# In[111]:
+
+
+d1
+
+
+# In[112]:
+
+
+new_dsi=(x['score']>7)&(x['platform']=='Nintendo DSi')
+
+
+# In[113]:
+
+
+new_dsi_filter=x[new_dsi]
+
+
+# In[114]:
+
+
+new_dsi_filter
+
+
+# In[115]:
+
+
+score_dsi=new_dsi_filter['score']
+
+
+# In[116]:
+
+
+score_dsi
+
+
+# In[117]:
+
+
+e1=score_dsi.mean()
+
+
+# In[118]:
+
+
+e1
+
+
+# In[119]:
+
+
+plt.plot([a1,b1,c1,d1,e1]) # [x-axis],[y-axis]
+plt.title('Platform Nintendo Average')
+plt.xlabel('x-axis')
+plt.ylabel('y-axis')
+print(plt.show())
+
+
+# In[120]:
+
+
+value=[a1,b1,c1,d1,e1]
+activities = ['New Ninendo 3DS','Nintendo 64','Nintendo 64 DD','Nintendo DS','Nintendo DSi']
+colors = ['r','g','c','w','m']
+plt.pie(value, labels=activities, colors=colors, startangle=90, autopct='%.1f%%')
+print(plt.show)
+
+
+# In[121]:
+
+
+import matplotlib.pyplot as plt; plt.rcdefaults()
+import numpy as np
+import matplotlib.pyplot as plt
+
+objects = ('New Nintendo 3DS', 'Nintendo 64', 'Nintendo 64 DD', 'Nintendo DS', 'Nintendo DSi')
+y_pos = np.arange(len(objects))
+performance = [a1,b1,c1,d1,e1]
+
+plt.bar(y_pos, performance, align='center', alpha=0.5)
+plt.xticks(y_pos, objects)
+plt.ylabel('Average Score')
+plt.title('Bar Graph')
+
+plt.show()
+
+
+
+# 
+# # Analysis of Android,PC,iPhone Product on column Platform
+
+# In[122]:
+
+
+android=(x['platform']=='Android')
+
+
+# In[123]:
+
+
+android_filtering=x[android]
+
+
+# In[124]:
+
+
+android_count=android_filtering['platform']
+
+
+# In[125]:
+
+
+android_count
+
+
+# In[126]:
+
+
+m1=android_count
+
+
+# In[127]:
+
+
+m=m1.count()
+
+
+# In[128]:
+
+
+m
+
+
+# In[129]:
+
+
+pc=(x['platform']=='PC')
+
+
+# In[130]:
+
+
+pc_filtering=x[pc]
+
+
+# In[131]:
+
+
+pc_filtering
+
+
+# In[132]:
+
+
+pc_count=pc_filtering['platform']
+
+
+# In[133]:
+
+
+pc_count
+
+
+# In[134]:
+
+
+n1=pc_count
+
+
+# In[135]:
+
+
+n=n1.count()
+
+
+# In[136]:
+
+
+n
+
+
+# In[137]:
+
+
+iphone=(x['platform']=='iPhone')
+
+
+# In[138]:
+
+
+iphone_filter=x[iphone]
+
+
+# In[139]:
+
+
+iphone_count=iphone_filter['platform']
+
+
+# In[140]:
+
+
+o=iphone_count.count()
+
+
+# In[141]:
+
+
+o
+
+
+# # Bar Graph for the Android,PC,iPhone
+
+# In[142]:
+
+
+value=[m,n,o]
+activities = ['Android','PC','iPhone']
+colors = ['r','g','c']
+plt.pie(value, labels=activities, colors=colors, startangle=90, autopct='%.1f%%')
+print(plt.show)
+
+
+# In[143]:
+
+
+import matplotlib.pyplot as plt; plt.rcdefaults() #problem? syntax ko smjhna hai?
+import numpy as np
+import matplotlib.pyplot as plt
+
+objects = ('Android', 'PC', 'iPhone')
+y_pos = np.arange(len(objects)) # ?
+performance = [m,n,o]
+
+plt.bar(y_pos, performance, align='center', alpha=0.5)
+plt.xticks(y_pos, objects) # ?
+plt.ylabel('Total No Of Platform Usage')
+plt.title('Bar Graph')
+
+plt.show()
+
+
+# In[144]:
+
+
+x.head(100)
+
+
+# In[145]:
+
+
+x.tail()
+
+
+# # Analysis of Column editors_choice Based on Boolean Y & N
+
+# In[146]:
+
+
+lis=x['editors_choice']
+
+
+# In[147]:
+
+
+lis
+
+
+# In[148]:
+
+
+lis.count()
+
+
+# In[149]:
+
+
+x['editors_choice'].value_counts(normalize=True) # pandas meh define hai
+
+
+# In[150]:
+
+
+var=x['editors_choice'].value_counts() # seaborn module meh define hai ye
+
+
+# In[151]:
+
+
+var
+
+
+# In[152]:
+
+
+import matplotlib.pyplot as plt; plt.rcdefaults() #problem? syntax ko smjhna hai?
+import numpy as np
+import matplotlib.pyplot as plt
+
+objects = ('Y', 'N')
+y_pos = np.arange(len(objects)) # ?
+performance = [3517,15108]
+
+plt.bar(y_pos, performance, align='center', alpha=0.7)
+plt.xticks(y_pos, objects) # ?
+plt.ylabel('Total Y & N')
+plt.title('Bar Graph Editors_Choice')
+
+plt.show()
+
+
+
+# In[153]:
+
+
+value=[3517,15108]
+activities = ['Y','N']
+colors = ['r','g']
+plt.pie(value, labels=activities, colors=colors, startangle=90, autopct='%.1f%%')
+print(plt.show)
+
+
+# In[154]:
+
+
+x
+
+
+# # Analysis of Top 5 genre Based On Score
+calculate the mean of every element in the genre, sort them and pick top 5kernel-restart
+# In[2]:
+
+
+import os
+import pandas as pd
+import numpy as np
+
+
+# In[3]:
+
+
+os.getcwd()
+
+
+# In[4]:
+
+
+location=("/Users/mohammadawais/Desktop/data.csv")
+
+
+# In[5]:
+
+
+x=pd.read_csv(location)
+
+
+# In[6]:
+
+
+x
+
+
+# In[7]:
+
+
+element=list(dict.fromkeys(x))
+
+
+# In[8]:
+
+
+element
+
+
+# In[9]:
+
+
+y=x.iloc[0:,1:]
+
+
+# In[10]:
+
+
+y
+
+
+# In[11]:
+
+
+z=x.loc[0:,['score','genre']]
+
+
+# In[12]:
+
+
+z
+
+
+# In[13]:
+
+
+genres=z['genre']
+
+
+# In[14]:
+
+
+genres
+
+
+# In[15]:
+
+
+a=list(dict.fromkeys(genres))
+
+
+# In[16]:
+
+
+a
+
+
+# In[17]:
+
+
+value=lambda i:for i in a:b=[genres==i],c=z[b],d=c['score'],e=d.mean(),return i,e
+   
+
+iss mean value ko sort krna hai
+# In[45]:
+
+
+for i in  a:
+    b=(genres==i)
+    c=z[b]
+    d=c['score']
+    e=d.mean()
+    print(i,e)
+    #for j,k in enumerate(a):
+        #print(j)
+        #print(k)
+
